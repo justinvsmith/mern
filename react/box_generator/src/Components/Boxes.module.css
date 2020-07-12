@@ -1,0 +1,13 @@
+
+.fancy {
+    width: 880px;
+    margin: 20px auto;
+    padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.box{
+    margin: 0 10px;
+}
