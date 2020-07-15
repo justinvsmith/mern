@@ -1,0 +1,14 @@
+.list{
+    width: 100px;
+    text-align: center;
+    margin: auto;
+}
+
+.button{
+    padding: 15px;
+    background-color: black;
+    color: white;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    border: none;
+}
