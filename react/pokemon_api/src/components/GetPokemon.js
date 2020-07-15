@@ -1,14 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import styles from './getPokemon.module.css';
+import axios from 'axios';
 
 function GetPokemon(){
     const [pokemon, setPokemon] = useState([]);
 
     function handleClick(){
-        fetch('https://pokeapi.co/api/v2/pokemon?limit=807&offset=200')
-        .then(response => response.json())
-        .then(response => setPokemon(response.results))
-        .catch(console.log);
+        // fetch('https://pokeapi.co/api/v2/pokemon?limit=807&offset=200')
+        // .then(response => response.json())
+        // .then(response => setPokemon(response.results))
+        // .catch(console.log);
+
+        axios.get('https://pokeapi.co/api/v2/pokemon?limit=807&offset=200')
+            .then(response=>{response.json()})
+            .then(response=>{setPokemon(response.results)})
         console.log("hello");
     }
 
