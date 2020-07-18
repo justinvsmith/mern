@@ -1,0 +1,75 @@
+#1
+use my_first_db
+
+#2 
+db.createCollection('students')
+
+#3
+db.students.insert({name: "Justin Smith", home_state: "California", lucky_number: 6, birthday: {month: 11, day: 29, year: 1982}})
+
+db.students.insert({name: "Laura Pierczynski", home_state: "New York", lucky_number: 15, birthday: {month: 11, day: 25, year: 1981}})
+
+db.students.insert({name: "Mallory Adiego", home_state: "California", lucky_number: 6, birthday: {month: 1, day: 18, year: 1986}})
+
+db.students.insert({name: "Beth Kittle", home_state: "California", lucky_number: 21, birthday: {month: 4, day: 4, year: 1985}})
+
+db.students.insert({name: "Leah Smith", home_state: "California", lucky_number: 9, birthday: {month: 8, day: 14, year: 1985}})
+
+#4
+db.students.find({lucky_number: {$gt: 3}}).pretty()
+
+#5
+db.students.find({lucky_number: {$lte: 10}}).pretty()
+
+#6
+db.students.find({ $and: [{lucky_number: {$gte: 1}}, {lucky_number: {$lte: 9}}]}).pretty()
+
+#7
+db.students.updateMany({}, {$set: {interests: ['coding', 'brunch', 'MongoDB']}})
+
+#8
+db.students.update({_id: ObjectId("5f12074a793eb4efdf3605de")}, {$push: {interests: "napping"}})
+db.students.update({_id: ObjectId("5f1208bb793eb4efdf3605df")}, {$push: {interests: "painting"}})
+db.students.update({_id: ObjectId("5f120a08793eb4efdf3605e0")}, {$push: {interests: "yoga"}})
+db.students.update({_id: ObjectId("5f120a10793eb4efdf3605e1")}, {$push: {interests: "gardening"}})
+db.students.update({_id: ObjectId("5f120a17793eb4efdf3605e2")}, {$push: {interests: "singing"}})
+
+#9
+db.students.update({_id: ObjectId("5f12074a793eb4efdf3605de")}, {$push: {interests: "taxes"}})
+
+#10
+db.students.update({_id: ObjectId("5f12074a793eb4efdf3605de")}, {$pop: {interests: (1)}})
+
+#11
+db.students.remove({home_state: "California"})
+
+#12
+db.students.remove({name: "Justin Smith"})
+
+#13
+db.students.remove({lucky_number: {$gt: 5}}, true)
+
+#14
+db.students.updateMany({}, {$set:{number_of_belts : 0}})
+
+#15
+db.students.updateMany({home_state: "Washington"}, {$set: { number_of_belts: 1}})
+
+#16
+db.students.updateMany({}, {$rename: {'number_of_belts': 'belts_earned'}})
+
+#17
+db.students.updateMany({}, {$unset: {lucky_number: ""}})
+
+#18
+db.students.updateMany({}, {$set: {updated_on: new Date()}})
+
+
+
+
+
+
+
+
+
+
