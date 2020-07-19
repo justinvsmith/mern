@@ -15,8 +15,14 @@ module.exports.createProduct = (req, res) => {
         .catch(err => res.json(err));
 }
 
-module.exports.getAll = (req, res) => {
-    Product.find()
-        .then(product => res.json(product))
+module.exports.getAllProducts = (req, res) => {
+    Product.find({})
+        .then(products => res.json(products))
+        .catch(err => res.json(err))
+}
+
+module.exports.getOne = (req, res) => {
+    Product.findById(req.params.id)
+        .then(products => res.json(products))
         .catch(err => res.json(err))
 }

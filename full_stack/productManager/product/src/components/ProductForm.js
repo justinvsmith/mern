@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form'
+import styles from './product.module.css';
 
 function ProductForm() {
     const [title, setTitle] = useState("");
@@ -20,20 +22,21 @@ function ProductForm() {
 
     return (
         <div>
-            <form onSubmit={onSubmitHandler}>
-                <div>
-                    <label>Title</label>
-                    <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
-                </div>
-                <div>
-                    <label>Price</label>
-                    <input type="text" onChange={(e) => setPrice(e.target.value)} value={price}/>
-                </div>
-                <div>
-                    <label>Description</label>
-                    <input type="text" onChange={(e) => setDescription(e.target.value)} value={description}/>
-                </div>
-                <input type="submit" value="create" />
+            <h3>Product Manager</h3>
+            <form className={styles.form} onSubmit={onSubmitHandler}>
+                <Form.Row className={styles.rows}>
+                    <label className={styles.labels}>Title</label>
+                    <Form.Control className={styles.inputs} type="text" onChange={(e) => setTitle(e.target.value)} value={title} />
+                </Form.Row>
+                <Form.Row className={styles.rows}>
+                    <label className={styles.labels}>Price</label>
+                    <Form.Control className={styles.inputs} type="text" onChange={(e) => setPrice(e.target.value)} value={price}/>
+                </Form.Row>
+                <Form.Row className={styles.rows}>
+                    <label className={styles.labels}>Description</label>
+                    <Form.Control className={styles.inputs} type="text" onChange={(e) => setDescription(e.target.value)} value={description}/>
+                </Form.Row>
+                <input className={styles.button} type="submit" value="create" />
             </form>
         </div>
     )
