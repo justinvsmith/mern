@@ -3,7 +3,8 @@ import axios from 'axios';
 import Form from 'react-bootstrap/Form'
 import styles from './product.module.css';
 
-function ProductForm() {
+function ProductForm(props) {
+    const {initialTitle, initialPrice, initialDescription, onSubmitProp} = props;
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
@@ -11,18 +12,15 @@ function ProductForm() {
     const onSubmitHandler = e => {
         e.preventDefault();
 
-        axios.post('http://localhost:8000/api/products', {
-            title,
-            price,
-            description
-        })
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err))
+        onSubmitProp({title, price, description});
+
+        setTitle("")
+        setPrice("")
+        setDescription("")
     }
 
     return (
         <div>
-            <h3>Product Manager</h3>
             <form className={styles.form} onSubmit={onSubmitHandler}>
                 <Form.Row className={styles.rows}>
                     <label className={styles.labels}>Title</label>
