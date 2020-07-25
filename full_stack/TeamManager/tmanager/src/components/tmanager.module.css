@@ -1,0 +1,13 @@
+.list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    width: 250px;
+    cursor: pointer;
+}
+
+.border{
+    width: 95%;
+    margin: auto;
+    border: 1px solid black;
+}
