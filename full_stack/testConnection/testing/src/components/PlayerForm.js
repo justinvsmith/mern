@@ -40,12 +40,17 @@ export default function PlayerForm({initialValue, method, url}){
             <div>
                 <label>Player Name:</label>
                 <input type="text" value={playerName} onChange={e => setPlayerName(e.target.value)} />
+                {
+                        playerName.length <2 && playerName.length !== 0 ?
+                        <p style={{color:'red'}}>Player Name must be more than 2 characters</p> :
+                        ""
+                    }
             </div>
             <div>
                 <label>Preferred Position:</label>
                 <input type="text" value={preferredPosition} onChange={e => setPreferredPosition(e.target.value)} />
             </div>
-            <button type="submit">Submit</button>
+            <button disabled={playerName.length<2}>Submit</button>
         </form>
     )
 
